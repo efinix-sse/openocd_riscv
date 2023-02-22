@@ -412,7 +412,6 @@ const struct vexriscv_core_reg_init vexriscv_init_reg_list[] = {
     .versions = "1.7-,rv32",
 },
 
-/*
 {
     .name = "sstatus",
     .csr_num = 0x100,
@@ -517,7 +516,6 @@ const struct vexriscv_core_reg_init vexriscv_init_reg_list[] = {
     .description = "Supervisor address translation and protection",
     .versions = "1.10-",
 },
-*/
 
 
 /*
@@ -606,7 +604,14 @@ const struct vexriscv_core_reg_init vexriscv_init_reg_list[] = {
     .versions = "1.7-",
 },
 
-
+{
+    .name = "dummy",
+    .csr_num = 0xF15,
+    .inHaltOnly = FALSE,
+    .is_csr = TRUE,
+    .description = "Dummy csr",
+    .versions = "1.7-",
+},
 
 {
     .name = "mstatus",
