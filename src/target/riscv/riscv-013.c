@@ -1563,6 +1563,7 @@ static int examine(struct target *target)
 {
 	/* Don't need to select dbus, since the first thing we do is read dtmcontrol. */
 
+	dtmcontrol_scan(target, DTM_DTMCS_DMIRESET | DTM_DTMCS_DMIHARDRESET); // Required for QC-RV32 Debug Module
 	uint32_t dtmcontrol = dtmcontrol_scan(target, 0);
 	LOG_DEBUG("dtmcontrol=0x%x", dtmcontrol);
 	LOG_DEBUG("  dmireset=%d", get_field(dtmcontrol, DTM_DTMCS_DMIRESET));
