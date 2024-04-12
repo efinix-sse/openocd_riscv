@@ -3552,6 +3552,11 @@ static int read_memory(struct target *target, target_addr_t address,
 {
 	if (count == 0)
 		return ERROR_OK;
+	
+	/* Bypass memory read from 0x0 to 0x1000 for standard debug interface*/
+	if (address < 0x1000){
+		return ERROR_FAIL;
+	}
 
 	if (size != 1 && size != 2 && size != 4 && size != 8 && size != 16) {
 		LOG_ERROR("BUG: Unsupported size for memory read: %d", size);
